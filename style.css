@@ -5,6 +5,7 @@
   --linear-gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
   --very-dark-violet: hsl(278, 68%, 11%);
   --white: hsl(0, 0%, 100%);
+  --radius: 10px;
 }
 
 *,
@@ -22,4 +23,60 @@ body {
   font-family: "Space Grotesk", sans-serif;
   font-size: 18px;
   line-height: 1.6;
+}
+
+::placeholder {
+  font-size: 1rem;
+}
+
+input {
+  border: 1px solid var(--light-grayish-violet);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 16px 20px;
+  width: 100%;
+}
+
+input:focus {
+  outline: 1px solid var(--very-dark-violet);
+}
+
+button {
+  border: 1px solid var(--very-dark-violet);
+  background-color: var(--very-dark-violet);
+  border-radius: var(--radius);
+  color: var(--white);
+  font-size: 1rem;
+  padding: 15px 20px;
+  width: 100%;
+}
+
+.px {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.g2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+
+form {
+  display: grid;
+  row-gap: 20px;
+}
+
+.form-group {
+  display: grid;
+}
+
+.form-label {
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.invalid-feedback {
+  color: var(--red);
 }
