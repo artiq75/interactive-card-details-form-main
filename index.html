@@ -14,7 +14,53 @@
   </head>
   <body>
     <div class="first"></div>
-    <div class="second"></div>
+    <div class="second">
+      <form novalidate>
+        <div>
+          <label for="name">Cardholder Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="e.g. Jane Appleseed"
+          />
+          <div class="invalid-feedback"></div>
+        </div>
+        <div>
+          <label for="number">Card Number</label>
+          <input
+            type="number"
+            name="number"
+            id="number"
+            placeholder="e.g. 1234 5678 9123 0000"
+          />
+          <div class="invalid-feedback"></div>
+        </div>
+        <div>
+          <div>
+            <p>Exp. Date (MM/YY)</p>
+            <div>
+              <div>
+                <label for="month"></label>
+                <input type="number" name="month" id="month" placeholder="MM" />
+                <div class="invalid-feedback"></div>
+              </div>
+              <div>
+                <label for="year"></label>
+                <input type="number" name="year" id="year" placeholder="YY" />
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="cvc">Cvc</label>
+            <input type="number" name="cvc" id="cvc" placeholder="e.g. 123" />
+            <div class="invalid-feedback"></div>
+          </div>
+        </div>
+        <button type="submit">Confirm</button>
+      </form>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
