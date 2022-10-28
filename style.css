@@ -1,0 +1,25 @@
+:root {
+  --dark-grayish-violet: hsl(279, 6%, 55%);
+  --red: hsl(0, 100%, 66%);
+  --light-grayish-violet: hsl(270, 3%, 87%);
+  --linear-gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+  --very-dark-violet: hsl(278, 68%, 11%);
+  --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
