@@ -1,29 +1,96 @@
+/**
+ * @type HTMLFormElement
+ */
 const form = document.forms[0]
+
+/**
+ * @type HTMLInputElement[]
+ */
 const inputs = form.querySelectorAll('input')
 
+/**
+ * @type HTMLElement[]
+ */
+const cardsFields = []
+
+inputs.forEach(input => {
+    const target = input.dataset.target
+
+    if (target) {
+        const field = document.getElementById(target)
+        field.textContent = field.dataset.default
+        cardsFields.push(field)
+    }
+});
+
+/**
+ * @param SubmitEvent e
+ */
 form.addEventListener('submit', function (e) {
     e.preventDefault()
 
     for (const input of inputs) {
-        if (!input.value && input.nextElementSibling !== null) {
-            input.nextElementSibling.textContent = "Can't be blank"
-        }
-    }
+        let nextElementSibling = input.nextElementSibling
 
-    for (const input of inputs) {
-        if (input.type !== 'number' || !input.value) continue
-        if (isNaN(input.valueAsNumber)) {
-            input.nextElementSibling.textContent = 'Wrong format, number only'
+        // only for date section
+        if (nextElementSibling === null) {
+            nextElementSibling = document.getElementById('date-invalid-feedback')
+        }
+
+        const value = input.value
+        const id = input.id
+
+        if (!value) {
+            nextElementSibling.textContent = "Can't be blank"
+        }
+
+        if (input.type === 'number' && isNaN(value)) {
+            nextElementSibling.textContent = 'Wrong format, number only'
+        }
+
+        if (id === 'number' && value.length != 16) {
+            nextElementSibling.textContent = 'You need enter 16 digits'
+        }
+
+        if ((id === 'month' || id === 'year') && value.length != 2) {
+            nextElementSibling.textContent = 'You need enter 2 digits, for month and year field'
+        }
+
+        if (id === 'cvc' && value.length != 3) {
+            nextElementSibling.textContent = 'You need enter 3 digits'
         }
     }
 })
 
+/**
+ * @param FocusEvent e
+ */
 form.addEventListener('focusin', function (e) {
     e.preventDefault()
 
-    const target = e.target
+    let nextElementSibling = e.target.nextElementSibling
 
-    if (target.nextElementSibling !== null) {
-        target.nextElementSibling.textContent = ''
+    // only for date section
+    if (nextElementSibling === null) {
+        nextElementSibling = document.getElementById('date-invalid-feedback')
     }
+
+    nextElementSibling.textContent = ''
 })
+
+inputs.forEach(input => {
+    input.addEventListener('input', function (e) {
+        const value = e.target.value
+        const target = e.target.dataset.target
+
+        cardsFields.forEach(field => {
+            if (field.getAttribute('id') !== target) return
+
+            field.textContent = value
+
+            if (!value) {
+                field.textContent = field.dataset.default
+            }
+        });
+    })
+});
