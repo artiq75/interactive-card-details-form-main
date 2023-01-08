@@ -25,8 +25,17 @@ body {
   line-height: 1.6;
 }
 
+body {
+  min-width: 350px;
+}
+
 ::placeholder {
   font-size: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: 100%;
 }
 
 input {
@@ -65,7 +74,51 @@ button {
 
 form {
   display: grid;
-  row-gap: 20px;
+  row-gap: 40px;
+}
+
+.first {
+  padding: 20px;
+  min-height: 30%;
+  margin-bottom: 100px;
+  background-image: url("images/bg-main-mobile.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-inner {
+  min-width: 100%;
+  height: 175px;
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+.card-back {
+  top: -10%;
+  left: 0%;
+}
+
+.card-front {
+  bottom: -67%;
+  right: 0%;
+}
+
+.second {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-inner {
+  max-width: 400px;
 }
 
 .form-group {
@@ -75,8 +128,55 @@ form {
 .form-label {
   text-transform: uppercase;
   margin-bottom: 7px;
+  font-size: 0.8em;
 }
 
 .invalid-feedback {
   color: var(--red);
+}
+
+@media (min-width: 500px) {
+  .first-inner {
+    min-width: 350px;
+    height: 175px;
+  }
+
+  .card-back {
+    top: -10%;
+    left: 15%;
+  }
+
+  .card-front {
+    bottom: -67%;
+    right: 16%;
+  }
+}
+
+@media (min-width: 1240px) {
+  body {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+  }
+
+  .first {
+    margin: 0;
+  }
+
+  .first-inner {
+    width: 447px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-back {
+    top: 57%;
+    left: 55%;
+  }
+
+  .card-front {
+    bottom: 57%;
+    right: -30%;
+  }
 }
