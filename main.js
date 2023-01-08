@@ -80,8 +80,25 @@ form.addEventListener('focusin', function (e) {
 
 inputs.forEach(input => {
     input.addEventListener('input', function (e) {
+        const id = e.target.id
         const value = e.target.value
         const target = e.target.dataset.target
+
+        if (id === 'name' && value.length > 20) {
+            return
+        }
+
+        if (id === 'number' && value.length > 16) {
+            return
+        }
+
+        if ((id === 'month' || id === 'year') && value.length > 2) {
+            return
+        }
+
+        if (id === 'cvc' && value.length > 3) {
+            return
+        }
 
         cardsFields.forEach(field => {
             if (field.getAttribute('id') !== target) return
